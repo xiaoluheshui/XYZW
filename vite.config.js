@@ -102,27 +102,6 @@ export default defineConfig(async () => {
     autoImportPlugin,
     componentsPlugin,
     vueI18nPlugin,
-    {
-      name: "copy-worker",
-      closeBundle() {
-        try {
-          const src = path.resolve(__dirname, "worker.js");
-          // Cloudflare Pages Advanced Mode expects _worker.js
-          const dest = path.resolve(__dirname, "dist/_worker.js");
-          if (fs.existsSync(src)) {
-            if (!fs.existsSync(path.dirname(dest))) {
-              fs.mkdirSync(path.dirname(dest), { recursive: true });
-            }
-            fs.copyFileSync(src, dest);
-            console.log("\n[copy-worker] worker.js copied to dist/_worker.js");
-          } else {
-            console.warn("\n[copy-worker] worker.js not found at " + src);
-          }
-        } catch (e) {
-          console.error("\n[copy-worker] Error copying worker.js:", e);
-        }
-      },
-    },
   ].filter(Boolean);
 
   return {
