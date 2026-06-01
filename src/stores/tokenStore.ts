@@ -471,6 +471,23 @@ export const useTokenStore = defineStore("tokens", () => {
             wsLogger.debug(`更新头像 [${tokenId}]: ${body.role.headImg}`);
           }
         }
+
+        // 调试：打印装备字段，看有没有直接的孔数字段
+        if (body?.role?.heroes) {
+          const firstHero = Object.values(body.role.heroes)[0] as any;
+          if (firstHero?.equipment) {
+            const sampleEquip = Object.values(firstHero.equipment)[0] as any;
+            if (sampleEquip) {
+              console.log(
+                `[孔数-装备字段] 装备对象所有key:`,
+                Object.keys(sampleEquip),
+              );
+              console.log(
+                `[孔数-quenches] 条目数=${Object.keys(sampleEquip.quenches || {}).length}, 红孔数=${Object.values(sampleEquip.quenches || {}).filter((q:any) => q.colorId === 6).length}`,
+              );
+            }
+          }
+        }
       }
 
       emitPlus(cmd, {
