@@ -1082,6 +1082,7 @@ export class XyzwWebSocketClient {
       item_openpackresp: "item_openpack",
       equipment_quenchresp: "equipment_quench",
       rank_getserverrankresp: "rank_getserverrank",
+      rank_getroleinforesp: "rank_getroleinfo",
       legion_claimpayloadtaskresp: "legion_claimpayloadtask",
       legion_claimpayloadtaskprogressresp: "legion_claimpayloadtaskprogress",
       saltroad_getwartyperesp: "saltroad_getwartype",
